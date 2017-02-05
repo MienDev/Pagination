@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MienDev.Common.Pagination</id>
+    <version>0.1.0</version>
+    <title>MienDev.Common.Pagination</title>
+    <authors>MienDev</authors>
+    <owners>MienDev</owners>
+    <projectUrl>https://github.com/MienDev/Pagination</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Pagination</description>
+    <releaseNotes>MienDev Pagination first release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>MienDev Pagination</tags>
+  </metadata>
+  <files>
+    <file src="bin\release\**" target="lib\" />
+  </files>
+</package>
