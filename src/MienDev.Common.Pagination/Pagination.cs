@@ -50,7 +50,7 @@ namespace MienDev.Common.Pagination
         /// <summary>
         /// 总共有多少页数据
         /// </summary>
-        public uint TotalPages => ItemsCount == 0 ? 0 : (uint)Math.Ceiling(ItemsCount / (double)PageSize);
+        public uint TotalPages => ItemsCount == 0 ? 0 : checked ((uint)Math.Ceiling(ItemsCount / (double)PageSize));
 
         /// <summary>
         /// PrevPageLink
