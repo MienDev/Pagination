@@ -12,7 +12,8 @@ namespace MienDev.Common.Pagination
 
         public Pagination(uint itemsCount, uint pageSize = 10, uint page = 1)
         {
-            if (pageSize <=1) throw new ArgumentOutOfRangeException($"{nameof(pageSize)} should largger than 1");
+            // if (itemsCount < 0) throw new ArgumentOutOfRangeException($"{nameof(itemsCount)} should largger or equal with 0");
+            if (pageSize <= 1) throw new ArgumentOutOfRangeException($"{nameof(pageSize)} should largger than 1");
 
             ItemsCount = itemsCount;
             PageSize = pageSize;
@@ -28,7 +29,7 @@ namespace MienDev.Common.Pagination
         public Pagination SetCurrentPage(uint page = 1)
         {
             if (page > TotalPages) page = TotalPages;
-            Page = page;           
+            Page = page;
             return this;
         }
 
@@ -48,11 +49,6 @@ namespace MienDev.Common.Pagination
         public uint ItemsCount { get; set; }
 
         /// <summary>
-        /// 总共有多少页数据
-        /// </summary>
-        public uint TotalPages => ItemsCount == 0 ? 0 : checked ((uint)Math.Ceiling(ItemsCount / (double)PageSize));
-
-        /// <summary>
         /// PrevPageLink
         /// </summary>
         public string PrevPageLink { get; set; }
@@ -61,5 +57,23 @@ namespace MienDev.Common.Pagination
         /// NextPageLink
         /// </summary>
         public string NextPageLink { get; set; }
+
+        /// <summary>
+        /// 总共有多少页数据
+        /// </summary>
+        public uint TotalPages => ItemsCount == 0 ? 0 : checked((uint)Math.Ceiling(ItemsCount / (double)PageSize));
+
+        /// <summary>
+        /// the skip items count for take some page 
+        /// </summary>
+        public uint SkipCount => IsValid ? (Page - 1) * PageSize : 0;
+
+        /// <summary>
+        /// Is this pagination valid
+        /// </summary>
+        public bool IsValid => ItemsCount > 0
+         && (PageSize > 0)
+         && Page > 0
+         && Page <= TotalPages;
     }
 }
