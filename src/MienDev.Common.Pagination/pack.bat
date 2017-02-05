@@ -1,7 +1,7 @@
 rem build
 
 rem pack
-move ..\..\nupkg\*.* ..\..\nupkg\archieve\
+move ..\..\nupkg\*.* ..\..\nupkg\archive\ -Force
 nuget pack -OutputDirectory ..\..\nupkg
 
 rem push
